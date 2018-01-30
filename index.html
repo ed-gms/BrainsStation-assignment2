@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <title>Number Gessing Game</title>
+  <script>
+    // generate a random integer between 0 and max
+    generateRandomNumber = (max) => {
+      let randomNumber = Math.floor(Math.random() * max);
+      return randomNumber;
+    }
+    console.log(generateRandomNumber)
+
+    // takes care of prompting the user for a guess and converting it to a number
+    getGuessFromUser = () => {
+      let guess = Number(prompt(`Guess a number between 0 and the one you chose.`));
+      return guess;
+    }
+
+    // gets the maximum number for the game from the user and returns it as a Number
+    getMaxFromUser = () => {
+      let max = Number(prompt("Please choose a number."));
+      return generateRandomNumber(max);
+    }
+
+    // check if a guess is correct and return a boolean
+    isGuessCorrect = (guessedN, random) => {
+      if (guessedN < random) {
+        alert("Too low!");
+      }
+      else if (guessedN > random) {
+        alert("Too high!");
+      }
+      else if (isNaN(guessedN)) {
+        alert("Oops! Not a number!");
+      }
+      else {
+        alert(`Correct!!!`);
+      }
+    }
+
+    // code that houses the while loop for our game. call this function once to begin
+    startGame = () => {
+      let name = prompt('Hi! What is your name?');
+      let welcome = alert(`Welcome ${name}! Let's play!`);
+      let random = getMaxFromUser();
+      let guess = getGuessFromUser();
+      while (random !== guess) {
+        isGuessCorrect(guess, random);
+        guess = getGuessFromUser();
+      }
+      alert('You won! Thanks for playing!');
+    }
+    startGame()
+  </script>
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>
